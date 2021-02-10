@@ -1,3 +1,5 @@
+# This a playground repo for react JS, use at your own risk.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
