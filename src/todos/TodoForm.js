@@ -7,7 +7,7 @@ const NewTodoForm = ({ todos, onCreatePressed }) => {
     const [inputValue, setInputValue] = useState('');
 
     return (
-        <div className="new-todo-form">
+        <div className="new-todo-form cell medium-6">
             <input
                 className="new-todo-input"
                 type="text"
