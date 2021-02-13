@@ -1,29 +1,22 @@
-import React, { Component, useState } from "react";
-import './todo.css'
-import TodoForm from "./TodoForm";
-import TodoTask from "./TodoTask";
+import React from 'react';
+import { connect } from 'react-redux';
+import TodoForm from './TodoForm';
+import TodoTask from './TodoTask';
+import { removeTodo } from './actions';
 
-class TodoList extends Component {
+const TodoList = ({ todos = [], onRemovePressed }) => (
+    <div className="list-wrapper grid-x ">
+        <TodoForm className="cell medium-6"/>
+        {todos.map(todo => <TodoTask todo={todo} onRemovePressed={onRemovePressed} />)}
+    </div>
+);
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      todos: [
-        { text: 'Hello' },
-        { text: 'two'}
-      ]
-    };
-  }
+const mapStateToProps = state => ({
+    todos: state.todos,
+});
 
-  render() {
-    return (
-      <div className="list-container grid-y">
-        <div> Hello</div>
-        <TodoForm  className="cell"/>
-        { this.state.todos.map(todo => <TodoTask todo={todo} />)}
-      </div>
-    );
-  }
-}
+const mapDispatchToProps = dispatch => ({
+    onRemovePressed: text => dispatch(removeTodo(text)),
+});
 
-export default TodoList;
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

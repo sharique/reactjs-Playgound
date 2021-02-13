@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 // import App from './App';
 // import reportWebVitals from './reportWebVitals';
 import TodoList from "./todos/TodoList"
+import { Provider } from "react-redux";
+import { configureStore } from "./store";
 import 'foundation-sites/dist/css/foundation.min.css'
 import './index.css';
 
@@ -11,10 +13,12 @@ function App(props) {
 }
 
 ReactDOM.render(
-  <React.StrictMode>
-    <div className="grid-container">
-    <App /></div>
-  </React.StrictMode>,
+  <div className="grid-container">
+    <Provider store={configureStore()} >
+      <App />
+    </Provider>
+  </div>
+  ,
 
   document.getElementById('root')
 );
